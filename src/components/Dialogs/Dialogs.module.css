@@ -1,0 +1,23 @@
+
+ .dialogsWrapper{
+    display: grid;
+ grid-template-columns: 2fr 10fr;
+ }
+
+ .dialogs{
+    padding: 10px;
+    color: white;
+ }
+
+ .dialog.active{
+    color:gold;
+ }
+
+ .messages{
+    padding: 10px;
+    color: white;
+ }
+
+ .sendBlock{
+   padding: 20px 0px 0px 0px;
+ }
