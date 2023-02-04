@@ -1,7 +1,7 @@
 
-import dialogsReducer from './reducer-dialogs';
-import sidebarReducer from './reducer-sideBar';
-import profileReducer from './reducer-profile';
+import dialogsReducer from './dialogsReducer';
+import sidebarReducer from './sidebarReducer';
+import profileReducer from './profileReducer';
 
 let store = {
 
