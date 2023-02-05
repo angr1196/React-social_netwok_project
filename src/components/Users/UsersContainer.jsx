@@ -4,30 +4,28 @@ import Users from "./Users";
 
 
 
-const mapStateToProps = (state)=>{
+let mapStateToProps = (state)=>{
 return{
     users: state.usersPage.users
 }
 }
 
-const mapDispatchToProps =(dispatch)=>{
-
+let mapDispatchToProps =(dispatch)=>{
     return{
-        follow: (id)=>{
-            dispatch(followAC(id))
+        follow: (userId)=>{
+            dispatch(followAC(userId));
         },
 
-        unfollow: (id)=>{
-            dispatch(unfollowAC(id))
+        unfollow: (userId)=>{
+            dispatch(unfollowAC(userId));
         },
 
         setUsers: (users)=>{
-            dispatch(setUsersAC(users))
+            dispatch(setUsersAC(users));
         }
     }
 
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
 
-export default UsersContainer;

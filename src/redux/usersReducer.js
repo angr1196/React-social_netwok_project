@@ -2,23 +2,10 @@
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
-const SET_STATE = 'SET_STATE';
+const SET_USERS = 'SET_USERS';
 
 let initaialState = {
-    users: [
-        {
-            id: 1, avaURL: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lldeQ91GwIVff43JBrpdbAAeYWj.jpg',
-            following: true, fullName: 'Dima', status: 'I like JS', location: { country: 'Ukraine', city: 'Kyiv' }},
-        {
-            id: 2, avaURL: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lldeQ91GwIVff43JBrpdbAAeYWj.jpg',
-            following: false, fullName: 'Aleksey', status: 'I like React', location: { country: 'Poland', city: 'Warsaw' }},
-        {
-            id: 3, avaURL: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lldeQ91GwIVff43JBrpdbAAeYWj.jpg',
-            following: false, fullName: 'Kolya', status: 'I like Redux', location: { country: 'Ukraine', city: 'Kharkiv' }},
-        {
-            id: 4, avaURL: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lldeQ91GwIVff43JBrpdbAAeYWj.jpg',
-            following: true, fullName: 'Vika', status: 'I like IT', location: { country: 'Turkey', city: 'Alanya' }}
-    ]
+    users: []
 }
 
 const usersReducer = (state = initaialState, action) => {
@@ -27,29 +14,28 @@ const usersReducer = (state = initaialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: [...state.users.map(u => {
+                users: state.users.map(u => {
                     if (action.userID === u.id) {
-                        return { ...u, following: true }
+                        return { ...u, followed: true }
                     }
                     return u;
-                })]
+                })
             };
 
         case UNFOLLOW:
             return {
                 ...state,
-                users: [...state.users.map(u => {
+                users: state.users.map(u => {
                     if (action.userID === u.id) {
-                        return { ...u, following: false }
+                        return { ...u, followed: false }
                     }
                     return u;
-                })]
+                })
             };
 
-        case SET_STATE:
+        case SET_USERS:
             return {
-                ...state,
-                users: [...state.users, action.usersData]
+                ...state, users: [...state.users, ...action.users]
             }
 
         default:
@@ -71,11 +57,6 @@ export const unfollowAC = (id) => {
     }
 }
 
-export const setUsersAC = (users) => {
-    return {
-        type: SET_STATE,
-        usersData: users
-    }
-}
+export const setUsersAC = (users) => ({type: SET_USERS, users})
 
 export default usersReducer;
