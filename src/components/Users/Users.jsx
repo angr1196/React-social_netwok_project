@@ -1,5 +1,7 @@
 import s from './Users.module.css'
 import userPhoto from '../../img/photo.png'
+import Preloader from '../common/Preloader';
+
 
 let Users =(props)=>{
 
@@ -9,11 +11,13 @@ let Users =(props)=>{
         pages.push(i);
     }
 
-    return < div >
+    return <>
+    {props.isFetching?<Preloader/>:null}
+    < div >
         <div>{
             pages.map(p => {
                 return <span className={props.currentPage === p ? s.selectedPage : ''}
-                    onClick={() => { props.onPageChange(p) }} >{p}</span>
+                    onClick={() => { props.onPageChanged(p) }} >{p}</span>
             })}
         </div>
         {
@@ -43,6 +47,7 @@ let Users =(props)=>{
             )
         }
     </div >
+    </>
 }
 
 
