@@ -3,7 +3,6 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer'
 import News from './components/News/News';
 import { Route, Routes } from 'react-router-dom';
@@ -22,7 +21,7 @@ const App = () => {
       <Navbar />
       <div className="content-wrapper" >
         <Routes>
-          <Route path="/profile" element={<ProfileContainer/>} />
+          <Route path='/profile*' element={<ProfileContainer/>} />
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="/users" element={<UsersContainer />} />
           <Route path="/news" element={<News />} />
