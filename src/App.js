@@ -10,6 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 
 
@@ -21,7 +22,7 @@ const App = () => {
       <Navbar />
       <div className="content-wrapper" >
         <Routes>
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<ProfileContainer/>} />
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="/users" element={<UsersContainer />} />
           <Route path="/news" element={<News />} />
