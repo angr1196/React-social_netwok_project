@@ -1,4 +1,5 @@
 import { combineReducers, legacy_createStore } from "redux";
+import authReducer from "./authReducer";
 import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
 import sidebarReducer from "./sidebarReducer";
@@ -10,6 +11,7 @@ let obj = {
     profilePage: profileReducer,
     sidebar: sidebarReducer,
     usersPage: usersReducer,
+    auth: authReducer,
  
 }
 
