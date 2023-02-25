@@ -1,5 +1,5 @@
 
-import { NavLink } from 'react-router-dom';
+
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
@@ -19,6 +19,7 @@ const Dialogs = (props) => {
         props.updateNewMessageText(text);
     }
 
+   
     return (
         <div className={s.dialogsWrapper}>
             <div className={s.dialogs}>
