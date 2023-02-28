@@ -1,7 +1,7 @@
 import React from "react";
 import Post from "./Post/Post"
 import s from "./MyPosts.module.css"
-import { Field, reduxForm } from "redux-form"
+import SendPostForm from "./SendPostForm";
 
 const MyPosts = (props) => {
 
@@ -17,7 +17,7 @@ const MyPosts = (props) => {
                 My Posts
             </h3>
             <div>
-                <SendPostReduxForm onSubmit ={sendNewPost}/>
+                <SendPostForm onSubmit ={sendNewPost}/>
             </div>
             <div className={s.posts}>
                 {postsData}
@@ -27,22 +27,6 @@ const MyPosts = (props) => {
     )
 }
 
-const SendPostForm =(props)=>{
-    return(
-        <form onSubmit={props.handleSubmit}>
-             <div>
-                    <Field placeholder = "Enter your message" name ="postBody" component ="textarea"/>
-                </div>
-                <div>
-                    <button>Add post</button>
-                </div>
-        </form>
-    )
-}
-
-const SendPostReduxForm = reduxForm({
-    form: "sendPostForm"
-})(SendPostForm)
 
 
 export default MyPosts;
