@@ -3,6 +3,7 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import React from 'react';
+import { updateUserStatus } from './../../redux/profileReducer';
 
 
 
@@ -12,7 +13,8 @@ const Profile = (props) => {
     return (
         
         <div className={s.content}>
-            <ProfileInfo userProfile= {props.userProfile}/>
+            <ProfileInfo userProfile= {props.userProfile} userStatus = {props.userStatus} 
+            updateUserStatus = {props.updateUserStatus}/>
             <MyPostsContainer  />
         </div>
     )
