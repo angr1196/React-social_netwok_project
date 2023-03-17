@@ -12,24 +12,27 @@ import { compose } from "redux";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        let userId = this.props.router.params.userId;
+        let userId = this.props.router.params.userId ;
         if (!userId) userId = 2;
+        if(!userId){
+            this.props.history.push("/login")
+        }
         this.props.getUserProfile(userId);
         this.props.getUserStatus(userId)
     }
 
     componentDidUpdate(prevProps) {
-        let userId = this.props.router.params.userId;
-        if (prevProps.router.params.userId !== userId) {
-            let userId = 2;
-            this.props.getUserProfile(userId);
+		let userId = this.props.router.params.userId;
+		if (prevProps.router.params.userId !== userId) {
+			let userId = 2;
+			this.props.getUserProfile(userId);
         }
     }
 
     render() {
-
+       
         return (
-            <Profile {...this.props} />
+            <Profile {...this.props}  />
         )
     }
 }
@@ -61,5 +64,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(connect(mapStateToProps, { getUserProfile, getUserStatus, updateUserStatus }),
-    withRouter)
-    (ProfileContainer)
+withRouter,
+withAuthRedirect)
+(ProfileContainer)

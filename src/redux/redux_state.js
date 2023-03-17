@@ -5,6 +5,7 @@ import profileReducer from "./profileReducer";
 import sidebarReducer from "./sidebarReducer";
 import usersReducer from "./usersReducer";
 import  ThunkMiddleware  from "redux-thunk";
+import appReducer from './appReducer';
 
 
 let obj = {
@@ -13,6 +14,7 @@ let obj = {
     sidebar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    app: appReducer
 }
 
 let reducers = combineReducers(obj);
