@@ -11,6 +11,8 @@ const MyPosts = (props) => {
         props.addPost(values.postBody); 
     }
 
+    console.log('Render')
+
     return (
         <div className={s.posts}>
             <h3>

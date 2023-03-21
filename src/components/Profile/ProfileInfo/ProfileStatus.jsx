@@ -1,45 +1,38 @@
 
-import React from "react";
-import { updateUserStatus } from './../../../redux/profileReducer';
+import React, { useEffect, useState } from "react";
 
-class ProfileStatus extends React.Component {
+const ProfileStatus =(props)=> {
 
-    state = {
-        editMode: false,
-        userStatus: this.props.userStatus
-    }
+   let [editMode, setEditMode] = useState(false)
+   let[userStatus, setUserStatus] = useState(props.userStatus)
 
-    activateEditMode = () => {
+   useEffect(()=>{
+    setUserStatus(props.userStatus)
+   },[props.userStatus])
 
-        this.setState({ editMode: true })
-    }
+   const activateEditMode =()=>{
+    setEditMode(true)
+   }
 
-    deactivateEditMode = () => {
-        this.setState({ editMode: false })
-        this.props.updateUserStatus(this.state.userStatus)
+   const deactivateEditMode =()=>{
+    setEditMode(false)
+    props.updateUserStatus(userStatus) 
+   }
 
-    }
+   const onStatusChange =(e)=>{
+    setUserStatus(e.target.value)
+}
 
-    componentDidUpdate(prevProps, prevState){
-        if(this.props.userStatus!==prevProps.userStatus){
-            this.setState({userStatus: this.props.userStatus})
-            }
-        }
 
-    
 
-    onStatusChange =(e)=>{
-        this.setState({userStatus: e.target.value})
-    }
-
-    render() {
+  
         return <div>
-            {!this.state.editMode
+            {!editMode
                 ? <div>
-                    <span onDoubleClick={this.activateEditMode}>{this.props.userStatus|| "---"}</span>
+                    <span onDoubleClick={activateEditMode} >{props.userStatus|| "---"}</span>
                 </div>
                 : <div>
-                    <input onChange={this.onStatusChange}  autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.userStatus} />
+                    <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={userStatus}  />
                 </div>
 
             }
@@ -47,6 +40,6 @@ class ProfileStatus extends React.Component {
 
     }
 
-}
+
 
 export default ProfileStatus;

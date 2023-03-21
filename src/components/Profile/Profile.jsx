@@ -13,7 +13,7 @@ const Profile = (props) => {
     return (
         
         <div className={s.content}>
-            <ProfileInfo userProfile= {props.userProfile} userStatus = {props.userStatus} />
+            <ProfileInfo userProfile= {props.userProfile} userStatus = {props.userStatus} updateUserStatus= {props.updateUserStatus} />
             <MyPostsContainer  />
         </div>
     )
